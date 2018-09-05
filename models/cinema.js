@@ -26,12 +26,25 @@ Cinema.prototype.filterFilmsByGenre = function(genre){
 }
 
 Cinema.prototype.isThereAMovieFrom = function(year){
-  let result = this.films.some((film)=>{
+  let result = this.films.some((film)=> {
     return film.year === year;
   })
   return result;
 }
 
+Cinema.prototype.allFilmsOverParticluarLength = function(length){
+  let result = this.films.every((film) => {
+    return film.length > length;
+  })
+  return result;
+}
+
+Cinema.prototype.totalRunningTimeOfAllFilms = function(){
+  const total = this.films.reduce((runningTotal, film) => {
+    return runningTotal + film.length;
+  }, 0)
+  return total;
+}
 
 
 
